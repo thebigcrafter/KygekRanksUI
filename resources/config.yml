@@ -1,0 +1,49 @@
+---
+# KygekRanksUI plugin
+# Made by Kygekraqmak
+
+##### DANGER ZONE #####
+# Do not change this (Only for internal use)!
+config-version: 1.0
+# If you encounter bugs set this to true to reset the config!
+reset: false
+#######################
+
+# Use "{player}" to show player's name
+# Use "&" as formatting codes
+
+# Title of the main form of KygekRanksUI
+# It will be shown right after the player typed the /ranks command
+title: "KygekRanksUI"
+# Content of the main form of KygekRanksUI
+# You can add general info about the ranks below
+content: "Change in config.yml!"
+# Return button to the main form of KygekRanksUI
+# It will be shown in the ranks form and applied globally
+return-button: "Return"
+# Exit button in the main form of KygekRanksUI
+exit-button: "Exit"
+
+##### RANKS FORM FORMAT #####
+# ranks:                                --> You will put the ranks menu button, title and content below here.
+#   ExampleRank:                        --> This will just be the identifier for the code to work. You can put anything you like.
+#     menu-button: "ExampleRank"        --> This will be the button of the rank that will be shown in the main form.
+#     title: "ExampleRank"              --> This will be the title of the rank that will be shown in the rank's form.
+#     content: "Change in config.yml!"  --> This will be the content of the rank that will be shown in the rank's form.
+#############################
+# Change here:
+ranks:
+  Rank1:
+    menu-button: "Rank1"
+    title: "Rank1"
+    content: "Change in config.yml!"
+  Rank2:
+    menu-button: "Rank2"
+    title: "Rank2"
+    content: "Change in config.yml!"
+  Rank3:
+    menu-button: "Rank3"
+    title: "Rank3"
+    content: "Change in config.yml!"
+  # You can add more if you need by following the format above
+...
