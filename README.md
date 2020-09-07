@@ -35,5 +35,5 @@ Use `-kygekranksui.ranks` to blacklist the `/ranks` command permission to groups
 # Additional Notes
 
 - Join the Discord <a href="https://discord.gg/CXtqUZv">here</a> for latest updates from Kygekraqmak.
-- If you find bugs or want to give suggestions, please visit <a href="https://github.com/Kygekraqmak/KygekRanksUI/issues">here</a> or DM Kygekraqmak#6415 via Discord.
+- If you find bugs or want to give suggestions, please visit <a href="https://github.com/Kygekraqmak/KygekRanksUI/issues">here</a> or DM KygekDev#6415 via Discord.
 - We accept any contributions! If you want to contribute please make a pull request in <a href="https://github.com/Kygekraqmak/KygekRanksUI/pulls">here</a>.
