@@ -4,13 +4,24 @@
 
 ##### DANGER ZONE #####
 # Do not change this (Only for internal use)!
-config-version: 1.0
+config-version: 1.1
 # If you encounter bugs set this to true to reset the config!
 reset: false
 #######################
 
 # Use "{player}" to show player's name
 # Use "&" as formatting codes
+# Use "\n" to break into new line
+
+##### COMMANDS #####
+# Set the command description of KygekRanksUI
+# Leave it empty if you want to use the default description
+command-description: ""
+# Set command aliases that will open KygekRanksUI when executed (Default command will always be /ranks)
+# Do not use "/" in front of the commands!
+# Leave it empty if you don't want to use aliases
+command-aliases: []
+####################
 
 # Title of the main form of KygekRanksUI
 # It will be shown right after the player typed the /ranks command
@@ -25,24 +36,41 @@ return-button: "Return"
 exit-button: "Exit"
 
 ##### RANKS FORM FORMAT #####
-# ranks:                                --> You will put the ranks menu button, title and content below here.
-#   ExampleRank:                        --> This will just be the identifier for the code to work. You can put anything you like.
-#     menu-button: "ExampleRank"        --> This will be the button of the rank that will be shown in the main form.
-#     title: "ExampleRank"              --> This will be the title of the rank that will be shown in the rank's form.
-#     content: "Change in config.yml!"  --> This will be the content of the rank that will be shown in the rank's form.
+# ranks:                                              --> You will put the ranks menu button, title and content below here.
+#   ExampleRank:                                      --> This will just be the identifier for the code to work. You can put anything you like.
+#     menu-button: "ExampleRank"                      --> This will be the button of the rank that will be shown in the main form.
+#     button-image: "https://example.com/example.png" --> [BETA] This will be the image shown beside the button in the main form.
+#     title: "ExampleRank"                            --> This will be the title of the rank that will be shown in the rank's form.
+#     content: "Change in config.yml!"                --> This will be the content of the rank that will be shown in the rank's form.
 #############################
+
+# Notes for button-image (not following this may not load the image):
+#
+# - Image should be using .jpg or .png format.
+# - Image should be 160 x 160 px in size.
+# - Image should be displayed as raw (no HTML/CSS/JavaScript included).
+# - Link should include "http://" or "https://".
+# - Leave it empty if you don't want to use any image(s).
+# - This feature is still in beta and will be improved in upcoming versions.
+# - Sometimes the image will not load properly, you may have to open status bar or press Windows key.
+#
+# For example, please visit https://kygekraqmak.github.io/downloads/css/test.png.
+
 # Change here:
 ranks:
   Rank1:
     menu-button: "Rank1"
+    button-image: ""
     title: "Rank1"
     content: "Change in config.yml!"
   Rank2:
     menu-button: "Rank2"
+    button-image: ""
     title: "Rank2"
     content: "Change in config.yml!"
   Rank3:
     menu-button: "Rank3"
+    button-image: ""
     title: "Rank3"
     content: "Change in config.yml!"
   # You can add more if you need by following the format above
