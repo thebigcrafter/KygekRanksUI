@@ -35,41 +35,41 @@ use Kygekraqmak\KygekRanksUI\Main;
 
 class Commands extends PluginCommand {
 
-  private $main;
-  private $prefix;
+    private $main;
+    private $prefix;
 
-  public function __construct(Main $main, string $desc, array $aliases) {
-    $this->main = $main;
-    $this->prefix = TextFormat::YELLOW . "[KygekRanksUI] ";
-    if ($desc == null) {
-      $desc = "Information about ranks in the server";
-    }
-    parent::__construct("ranks", $main);
-    $this->setPermission("kygekranksui.ranks");
-    $this->setAliases($aliases);
-    $this->setUsage("/ranks");
-    $this->setDescription($desc);
-  }
-
-  public function main() {
-    return $this->main;
-  }
-
-  public function execute(CommandSender $sender, string $alias, array $args) : bool {
-    if (!$sender instanceof Player) $sender->sendMessage($this->prefix . TextFormat::RED . "This command only works in-game!");
-    else {
-      if ($sender->hasPermission("kygekranksui.ranks")) {
-        if (file_exists($this->main()->getDataFolder()."config.yml")) {
-          $this->main()->getConfig()->reload();
-          $this->main()->ranksMenu($sender);
-        } else {
-          $sender->sendMessage($this->prefix . TextFormat::RED . "Config file cannot be found, please restart the server!");
+    public function __construct(Main $main, string $desc, array $aliases) {
+        $this->main = $main;
+        $this->prefix = TextFormat::YELLOW . "[KygekRanksUI] ";
+        if ($desc == null) {
+            $desc = "Information about ranks in the server";
         }
-      } else {
-        $sender->sendMessage($this->prefix . TextFormat::RED . "You do not have permission to use this command!");
-      }
+        parent::__construct("ranks", $main);
+        $this->setPermission("kygekranksui.ranks");
+        $this->setAliases($aliases);
+        $this->setUsage("/ranks");
+        $this->setDescription($desc);
     }
-    return true;
-  }
+
+    public function main() {
+        return $this->main;
+    }
+
+    public function execute(CommandSender $sender, string $alias, array $args) : bool {
+        if (!$sender instanceof Player) $sender->sendMessage($this->prefix . TextFormat::RED . "This command only works in-game!");
+        else {
+            if ($sender->hasPermission("kygekranksui.ranks")) {
+                if (file_exists($this->main()->getDataFolder()."config.yml")) {
+                    $this->main()->getConfig()->reload();
+                    $this->main()->ranksMenu($sender);
+                } else {
+                    $sender->sendMessage($this->prefix . TextFormat::RED . "Config file cannot be found, please restart the server!");
+                }
+            } else {
+                $sender->sendMessage($this->prefix . TextFormat::RED . "You do not have permission to use this command!");
+            }
+        }
+        return true;
+    }
 
 }
