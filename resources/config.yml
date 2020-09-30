@@ -4,7 +4,7 @@
 
 ##### DANGER ZONE #####
 # Do not change this (Only for internal use)!
-config-version: 1.1
+config-version: 1.2
 # If you encounter bugs set this to true to reset the config!
 reset: false
 #######################
@@ -34,27 +34,31 @@ content: "Change in config.yml!"
 return-button: "Return"
 # Exit button in the main form of KygekRanksUI
 exit-button: "Exit"
+# Whether to return to main form when ranks form closed (X button at upper right corner)
+return-to-main: true
 
 ##### RANKS FORM FORMAT #####
 # ranks:                                              --> You will put the ranks menu button, title and content below here.
 #   ExampleRank:                                      --> This will just be the identifier for the code to work. You can put anything you like.
 #     menu-button: "ExampleRank"                      --> This will be the button of the rank that will be shown in the main form.
-#     button-image: "https://example.com/example.png" --> [BETA] This will be the image shown beside the button in the main form.
+#     button-image: "https://example.com/example.png" --> This will be the image shown beside the button in the main form.
 #     title: "ExampleRank"                            --> This will be the title of the rank that will be shown in the rank's form.
 #     content: "Change in config.yml!"                --> This will be the content of the rank that will be shown in the rank's form.
 #############################
 
 # Notes for button-image (not following this may not load the image):
 #
-# - Image should be using .jpg or .png format.
+# There are 2 modes (texture pack or link). If you want to use image from link, you must follow below:
+# - Image should be using the .png format.
 # - Image should be 160 x 160 px in size.
 # - Image should be displayed as raw (no HTML/CSS/JavaScript included).
 # - Link should include "http://" or "https://".
 # - Leave it empty if you don't want to use any image(s).
 # - This feature is still in beta and will be improved in upcoming versions.
 # - Sometimes the image will not load properly, you may have to open status bar or press Windows key.
-#
 # For example, please visit https://kygekraqmak.github.io/downloads/css/test.png.
+#
+# If you want to use image from texture pack, please visit https://github.com/Kygekraqmak/default-textures for more info.
 
 # Change here:
 ranks:
