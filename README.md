@@ -12,9 +12,10 @@ A PocketMine-MP plugin that shows information about ranks in the server. You can
 - Config file can be reset
 - Show player name (`{player}`)
 - Supports `&` as formatting codes
-- Supports images beside ranks buttons
+- Supports images beside ranks buttons (links and texture packs)
 - Change command description to suit your server
 - Supports command aliases
+- Enable/disable ranks form to go back to main form when pressing the X
 
 # How to Install
 
@@ -35,7 +36,6 @@ Use `-kygekranksui.ranks` to blacklist the `/ranks` command permission to groups
 
 # Upcoming Features
 
-- Able to enable/disable ranks form to go back to main form when pressing the X button in `config.yml`
 - Automatic update checker
 - And much more
 
