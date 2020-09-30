@@ -42,14 +42,13 @@ class Main extends PluginBase {
         $this->saveResource("config.yml");
         $this->checkConfig();
         $this->getServer()->getCommandMap()->register("ranks", new Commands(
-            $this,
-            $this->getConfig()->get("command-description"),
+            $this, $this->getConfig()->get("command-description"),
             $this->getConfig()->get("command-aliases")
         ));
     }
 
     public function checkConfig() {
-        if ($this->getConfig()->get("config-version") !== 1.1) {
+        if ($this->getConfig()->get("config-version") !== 1.2) {
             $this->getLogger()->notice("Your configuration file is outdated, updating the config.yml...");
             $this->getLogger()->notice("The old configuration file can be found at config_old.yml");
             rename($this->getDataFolder()."config.yml", $this->getDataFolder()."config_old.yml");
@@ -72,7 +71,7 @@ class Main extends PluginBase {
             $button = $buttons[$data];
             $form2 = new SimpleForm(function (Player $player, $data) {
                 if ($data === null) {
-                    $this->ranksMenu($player);
+                    if ($this->getConfig()->get("return-to-main")) $this->ranksMenu($player);
                     return true;
                 }
                 switch ($data) {
@@ -87,12 +86,18 @@ class Main extends PluginBase {
         $form->setTitle($this->replace($player, $this->getConfig()->get("title")));
         $form->setContent($this->replace($player, $this->getConfig()->get("content")));
         foreach (array_keys($this->getConfig()->get("ranks")) as $ranks) {
-            if ($this->getConfig()->getNested("ranks." . $ranks . ".button-image") == null) {
+            $bimage = $this->getConfig()->getNested("ranks." . $ranks . ".button-image");
+            if ($bimage == null) {
                 $form->addButton($this->replace($player, $this->getConfig()->getNested("ranks." . $ranks . ".menu-button")));
-            } else {
+            } elseif (stripos($bimage, "https://") !== false xor stripos($bimage, "http://") !== false) {
                 $form->addButton(
                     $this->replace($player, $this->getConfig()->getNested("ranks." . $ranks . ".menu-button")),
                     1, $this->getConfig()->getNested("ranks." . $ranks . ".button-image")
+                );
+            } else {
+                $form->addButton(
+                    $this->replace($player, $this->getConfig()->getNested("ranks." . $ranks . ".menu-button")),
+                    0, $this->getConfig()->getNested("ranks." . $ranks . ".button-image")
                 );
             }
         }
