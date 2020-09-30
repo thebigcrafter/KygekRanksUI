@@ -41,6 +41,7 @@ Use `-kygekranksui.ranks` to blacklist the `/ranks` command permission to groups
 
 # Additional Notes
 
+- <a href="https://github.com/Kygekraqmak/default-textures">Visit my repo</a> for a list of Minecraft Bedrock default texture pack library (for references only) if you want to use texture packs for button image.
 - Join the Discord <a href="https://discord.gg/CXtqUZv">here</a> for latest updates from Kygekraqmak.
 - If you found bugs or want to give suggestions, please visit <a href="https://github.com/Kygekraqmak/KygekRanksUI/issues">here</a> or DM KygekDev#6415 via Discord.
 - We accept any contributions! If you want to contribute please make a pull request in <a href="https://github.com/Kygekraqmak/KygekRanksUI/pulls">here</a>.
