@@ -15,7 +15,7 @@ A PocketMine-MP plugin that shows information about ranks in the server. You can
 - Supports images beside ranks buttons (links and texture packs)
 - Change command description to suit your server
 - Supports command aliases
-- Enable/disable ranks form to go back to main form when pressing the X
+- Enable/disable ranks form to go back to main form when pressing the X button
 
 # How to Install
 
