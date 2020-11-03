@@ -4,7 +4,7 @@
 
 ##### DANGER ZONE #####
 # Do not change this (Only for internal use)!
-config-version: 1.2
+config-version: 1.3
 # If you encounter bugs set this to true to reset the config!
 reset: false
 #######################
@@ -78,4 +78,7 @@ ranks:
     title: "Rank3"
     content: "Change in config.yml!"
   # You can add more if you need by following the format above
+
+# Whether to check for plugin updates (Recommended)
+check-updates: true
 ...
