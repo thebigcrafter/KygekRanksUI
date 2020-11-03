@@ -27,13 +27,9 @@ declare(strict_types=1);
 namespace Kygekraqmak\KygekRanksUI;
 
 use pocketmine\Player;
-use pocketmine\command\Command;
-use pocketmine\command\CommandSender;
 use pocketmine\plugin\PluginBase;
-use pocketmine\utils\TextFormat;
 
 use jojoe77777\FormAPI\SimpleForm;
-use Kygekraqmak\KygekRanksUI\Commands;
 
 class Main extends PluginBase {
 
@@ -108,8 +104,7 @@ class Main extends PluginBase {
     public function replace($player, $location) {
         $from = ["{player}", "&"];
         $to = [$player->getName(), "§"];
-        $replace = str_replace($from, $to, $location);
-        return $replace;
+        return str_replace($from, $to, $location);
     }
 
 }

@@ -31,8 +31,6 @@ use pocketmine\command\CommandSender;
 use pocketmine\command\PluginCommand;
 use pocketmine\utils\TextFormat;
 
-use Kygekraqmak\KygekRanksUI\Main;
-
 class Commands extends PluginCommand {
 
     private $main;
@@ -51,11 +49,11 @@ class Commands extends PluginCommand {
         $this->setDescription($desc);
     }
 
-    public function main() {
+    public function main(): Main {
         return $this->main;
     }
 
-    public function execute(CommandSender $sender, string $alias, array $args) : bool {
+    public function execute(CommandSender $sender, string $commandLabel, array $args) : bool {
         if (!$sender instanceof Player) $sender->sendMessage($this->prefix . TextFormat::RED . "This command only works in-game!");
         else {
             if ($sender->hasPermission("kygekranksui.ranks")) {
