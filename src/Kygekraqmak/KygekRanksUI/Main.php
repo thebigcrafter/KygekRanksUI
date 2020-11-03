@@ -26,6 +26,7 @@ declare(strict_types=1);
 
 namespace Kygekraqmak\KygekRanksUI;
 
+use JackMD\UpdateNotifier\UpdateNotifier;
 use pocketmine\Player;
 use pocketmine\plugin\PluginBase;
 
@@ -33,14 +34,13 @@ use jojoe77777\FormAPI\SimpleForm;
 
 class Main extends PluginBase {
 
-    public function onLoad() {
-        $this->getServer()->getAsyncPool()->submitTask(new UpdateTask($this));
-    }
-
     public function onEnable() {
         @mkdir($this->getDataFolder());
         $this->saveResource("config.yml");
         $this->checkConfig();
+        if ($this->getConfig()->get("check-updates", true)) {
+            UpdateNotifier::checkUpdate($this->getDescription()->getName(), $this->getDescription()->getVersion());
+        }
         $this->getServer()->getCommandMap()->register("ranks", new Commands(
             $this, $this->getConfig()->get("command-description"),
             $this->getConfig()->get("command-aliases")
