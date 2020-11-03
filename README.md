@@ -16,6 +16,7 @@ A PocketMine-MP plugin that shows information about ranks in the server. You can
 - Change command description to suit your server
 - Supports command aliases
 - Enable/disable ranks form to go back to main form when pressing the X button
+- Automatic plugin updates checker
 
 # How to Install
 
@@ -36,8 +37,7 @@ Use `-kygekranksui.ranks` to blacklist the `/ranks` command permission to groups
 
 # Upcoming Features
 
-- Automatic update checker
-- And much more
+- Currently none planned. You can contribute or suggest for new features.
 
 # Additional Notes
 
