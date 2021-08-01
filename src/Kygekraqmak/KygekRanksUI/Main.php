@@ -27,6 +27,7 @@ declare(strict_types=1);
 namespace Kygekraqmak\KygekRanksUI;
 
 use JackMD\UpdateNotifier\UpdateNotifier;
+use KygekTeam\KtpmplCfs\KtpmplCfs;
 use pocketmine\Player;
 use pocketmine\plugin\PluginBase;
 
@@ -38,9 +39,7 @@ class Main extends PluginBase {
         @mkdir($this->getDataFolder());
         $this->saveResource("config.yml");
         $this->checkConfig();
-        if ($this->getConfig()->get("check-updates", true)) {
-            UpdateNotifier::checkUpdate($this->getDescription()->getName(), $this->getDescription()->getVersion());
-        }
+        KtpmplCfs::checkUpdates($this);
         $this->getServer()->getCommandMap()->register("ranks", new Commands(
             $this, $this->getConfig()->get("command-description"),
             $this->getConfig()->get("command-aliases")
@@ -48,18 +47,11 @@ class Main extends PluginBase {
     }
 
     public function checkConfig() {
-        if ($this->getConfig()->get("config-version") !== 1.3) {
-            $this->getLogger()->notice("Your configuration file is outdated, updating the config.yml...");
-            $this->getLogger()->notice("The old configuration file can be found at config_old.yml");
-            rename($this->getDataFolder()."config.yml", $this->getDataFolder()."config_old.yml");
-            $this->saveResource("config.yml");
-            return;
-        }
+        KtpmplCfs::checkConfig($this, "1.4");
         if ($this->getConfig()->get("reset") === true) {
             $this->getLogger()->notice("Successfully reset the configuration file");
             unlink($this->getDataFolder()."config.yml");
             $this->saveResource("config.yml");
-            return;
         }
     }
 
