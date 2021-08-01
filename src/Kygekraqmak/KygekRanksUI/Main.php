@@ -26,7 +26,6 @@ declare(strict_types=1);
 
 namespace Kygekraqmak\KygekRanksUI;
 
-use JackMD\UpdateNotifier\UpdateNotifier;
 use KygekTeam\KtpmplCfs\KtpmplCfs;
 use pocketmine\Player;
 use pocketmine\plugin\PluginBase;
