@@ -11,7 +11,7 @@
 #          |____/ |____/                           |_|
 #
 # A PocketMine-MP plugin that shows information about ranks in the server
-# Copyright (C) 2020 Kygekraqmak
+# Copyright (C) 2020-2021 Kygekraqmak
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -20,7 +20,7 @@
 #
 
 name: KygekRanksUI
-version: 1.3.0
+version: 1.4.0
 main: Kygekraqmak\KygekRanksUI\Main
 api: 3.0.0
 author: Kygekraqmak
