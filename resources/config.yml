@@ -54,9 +54,9 @@ return-to-main: true
 # - Image should be displayed as raw (no HTML/CSS/JavaScript included).
 # - Link should include "http://" or "https://".
 # - Sometimes the image will not load properly, you may have to open status bar or press Windows key.
-# - For example, please visit https://kygekraqmak.github.io/downloads/css/test.png.
+# - For example, please visit https://kygekdev.github.io/test.png.
 #
-# If you want to use image from texture pack, please visit https://github.com/Kygekraqmak/default-textures for more info.
+# If you want to use image from texture pack, please visit https://github.com/KygekDev/default-textures for more info.
 #
 # Leave button-image empty if you don't want to use any image(s).
 
