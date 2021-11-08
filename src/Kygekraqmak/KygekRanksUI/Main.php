@@ -33,7 +33,14 @@ use Vecnavium\FormsUI\SimpleForm;
 
 class Main extends PluginBase {
 
+    private const IS_DEV = true;
+
     protected function onEnable() : void {
+        /** @phpstan-ignore-next-line */
+        if (self::IS_DEV) {
+            $this->getLogger()->warning("This plugin is running on a development version. There might be some major bugs. If you found one, please submit an issue in https://github.com/KygekTeam/KygekRanksUI/issues.");
+        }
+
         @mkdir($this->getDataFolder());
         $this->saveResource("config.yml");
         $this->checkConfig();
