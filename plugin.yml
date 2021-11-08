@@ -20,9 +20,11 @@
 #
 
 name: KygekRanksUI
-version: 1.4.0
+version: 2.0.0-BETA
 main: Kygekraqmak\KygekRanksUI\Main
-api: 3.0.0
+api: 4.0.0
+extensions:
+  Core: ">=8.0"
 authors: [Kygekraqmak, KygekTeam]
 
 permissions:

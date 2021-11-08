@@ -26,15 +26,15 @@ declare(strict_types=1);
 
 namespace Kygekraqmak\KygekRanksUI;
 
-use pocketmine\Player;
+use pocketmine\command\Command;
+use pocketmine\player\Player;
 use pocketmine\command\CommandSender;
-use pocketmine\command\PluginCommand;
 use pocketmine\utils\TextFormat;
 
-class Commands extends PluginCommand {
+class Commands extends Command {
 
-    private $main;
-    private $prefix;
+    private Main $main;
+    private string $prefix;
 
     public function __construct(Main $main, string $desc, array $aliases) {
         $this->main = $main;
@@ -42,11 +42,8 @@ class Commands extends PluginCommand {
         if ($desc == null) {
             $desc = "Information about ranks in the server";
         }
-        parent::__construct("ranks", $main);
+        parent::__construct("ranks", $desc, "/ranks", $aliases);
         $this->setPermission("kygekranksui.ranks");
-        $this->setAliases($aliases);
-        $this->setUsage("/ranks");
-        $this->setDescription($desc);
     }
 
     public function main(): Main {
@@ -56,7 +53,7 @@ class Commands extends PluginCommand {
     public function execute(CommandSender $sender, string $commandLabel, array $args) : bool {
         if (!$sender instanceof Player) $sender->sendMessage($this->prefix . TextFormat::RED . "This command only works in-game!");
         else {
-            if ($sender->hasPermission("kygekranksui.ranks")) {
+            if ($this->testPermissionSilent($sender)) {
                 if (file_exists($this->main()->getDataFolder()."config.yml")) {
                     $this->main()->getConfig()->reload();
                     $this->main()->ranksMenu($sender);

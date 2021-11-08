@@ -27,14 +27,13 @@ declare(strict_types=1);
 namespace Kygekraqmak\KygekRanksUI;
 
 use KygekTeam\KtpmplCfs\KtpmplCfs;
-use pocketmine\Player;
+use pocketmine\player\Player;
 use pocketmine\plugin\PluginBase;
-
-use jojoe77777\FormAPI\SimpleForm;
+use Vecnavium\FormsUI\SimpleForm;
 
 class Main extends PluginBase {
 
-    public function onEnable() {
+    protected function onEnable() : void {
         @mkdir($this->getDataFolder());
         $this->saveResource("config.yml");
         $this->checkConfig();
@@ -46,7 +45,7 @@ class Main extends PluginBase {
     }
 
     public function checkConfig() {
-        KtpmplCfs::checkConfig($this, "1.4");
+        KtpmplCfs::checkConfig($this, "2.0");
         if ($this->getConfig()->get("reset") === true) {
             $this->getLogger()->notice("Successfully reset the configuration file");
             unlink($this->getDataFolder()."config.yml");
@@ -96,7 +95,7 @@ class Main extends PluginBase {
         $player->sendForm($form);
     }
 
-    public function replace($player, $location) {
+    public function replace(Player $player, string $location) : string {
         $from = ["{player}", "&"];
         $to = [$player->getName(), "§"];
         return str_replace($from, $to, $location);
