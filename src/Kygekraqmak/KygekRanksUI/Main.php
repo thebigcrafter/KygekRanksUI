@@ -13,7 +13,7 @@
  *          |____/ |____/                           |_|
  *
  * A PocketMine-MP plugin that shows information about ranks in the server
- * Copyright (C) 2020-2021 Kygekraqmak
+ * Copyright (C) 2020-2021 Kygekraqmak, KygekTeam
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
