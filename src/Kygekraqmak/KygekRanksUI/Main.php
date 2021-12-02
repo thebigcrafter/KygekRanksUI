@@ -33,7 +33,7 @@ use Vecnavium\FormsUI\SimpleForm;
 
 class Main extends PluginBase {
 
-    private const IS_DEV = true;
+    private const IS_DEV = false;
 
     protected function onEnable() : void {
         /** @phpstan-ignore-next-line */

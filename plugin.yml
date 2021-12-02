@@ -20,12 +20,12 @@
 #
 
 name: KygekRanksUI
-version: 2.0.0-BETA
+version: 2.0.0
 main: Kygekraqmak\KygekRanksUI\Main
 api: 4.0.0
-extensions:
-  Core: ">=8.0"
 authors: [Kygekraqmak, KygekTeam]
+description: Shows information about ranks in the server
+website: https://github.com/KygekTeam/KygekRanksUI
 
 permissions:
   kygekranksui.ranks:
