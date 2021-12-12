@@ -29,9 +29,10 @@ namespace Kygekraqmak\KygekRanksUI;
 use pocketmine\command\Command;
 use pocketmine\player\Player;
 use pocketmine\command\CommandSender;
+use pocketmine\plugin\PluginOwned;
 use pocketmine\utils\TextFormat;
 
-class Commands extends Command {
+class Commands extends Command implements PluginOwned {
 
     private Main $main;
     private string $prefix;
@@ -46,17 +47,13 @@ class Commands extends Command {
         $this->setPermission("kygekranksui.ranks");
     }
 
-    public function main(): Main {
-        return $this->main;
-    }
-
     public function execute(CommandSender $sender, string $commandLabel, array $args) : bool {
         if (!$sender instanceof Player) $sender->sendMessage($this->prefix . TextFormat::RED . "This command only works in-game!");
         else {
             if ($this->testPermissionSilent($sender)) {
-                if (file_exists($this->main()->getDataFolder()."config.yml")) {
-                    $this->main()->getConfig()->reload();
-                    $this->main()->ranksMenu($sender);
+                if (file_exists($this->getOwningPlugin()->getDataFolder()."config.yml")) {
+                    $this->getOwningPlugin()->getConfig()->reload();
+                    $this->getOwningPlugin()->ranksMenu($sender);
                 } else {
                     $sender->sendMessage($this->prefix . TextFormat::RED . "Config file cannot be found, please restart the server!");
                 }
@@ -65,6 +62,10 @@ class Commands extends Command {
             }
         }
         return true;
+    }
+
+    public function getOwningPlugin() : Main {
+        return $this->main;
     }
 
 }

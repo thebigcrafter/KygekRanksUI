@@ -12,6 +12,4 @@ projects:
     - src: KygekTeam/ktpmpl-cfs/ktpmpl-cfs
       branch: pm4-updatenotifier
       version: ^3.0
-    lint:
-      phpstan: false
 ...
