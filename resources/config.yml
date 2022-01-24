@@ -81,4 +81,7 @@ ranks:
 
 # Whether to check for plugin updates (Recommended)
 check-updates: true
+
+# Whether to warn if plugin is running on a development version (Recommended)
+warn-development: true
 ...

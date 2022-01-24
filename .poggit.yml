@@ -10,6 +10,5 @@ projects:
     - src: Vecnavium/FormsUI/FormsUI
       version: ^1.0.0
     - src: KygekTeam/ktpmpl-cfs/ktpmpl-cfs
-      branch: pm4-updatenotifier
-      version: ^3.0
+      version: ^4.0.0
 ...

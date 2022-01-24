@@ -29,6 +29,7 @@ namespace Kygekraqmak\KygekRanksUI;
 use KygekTeam\KtpmplCfs\KtpmplCfs;
 use pocketmine\player\Player;
 use pocketmine\plugin\PluginBase;
+use pocketmine\utils\TextFormat;
 use Vecnavium\FormsUI\SimpleForm;
 
 class Main extends PluginBase {
@@ -36,27 +37,28 @@ class Main extends PluginBase {
     private const IS_DEV = false;
 
     protected function onEnable() : void {
+        $ktpmplcfs = new KtpmplCfs($this);
         /** @phpstan-ignore-next-line */
         if (self::IS_DEV) {
-            $this->getLogger()->warning("This plugin is running on a development version. There might be some major bugs. If you found one, please submit an issue in https://github.com/KygekTeam/KygekRanksUI/issues.");
+            $ktpmplcfs->warnDevelopmentVersion();
         }
 
-        @mkdir($this->getDataFolder());
-        $this->saveResource("config.yml");
-        $this->checkConfig();
-        KtpmplCfs::checkUpdates($this);
+        $this->saveDefaultConfig();
+        $this->checkConfig($ktpmplcfs);
+        $ktpmplcfs->checkUpdates();
         $this->getServer()->getCommandMap()->register("ranks", new Commands(
             $this, $this->getConfig()->get("command-description"),
             $this->getConfig()->get("command-aliases")
         ));
     }
 
-    public function checkConfig() {
-        KtpmplCfs::checkConfig($this, "2.1");
+    public function checkConfig(KtpmplCfs $ktpmplCfs) {
+        $ktpmplCfs->checkConfig("2.1");
         if ($this->getConfig()->get("reset") === true) {
             $this->getLogger()->notice("Successfully reset the configuration file");
             unlink($this->getDataFolder()."config.yml");
             $this->saveResource("config.yml");
+            $this->reloadConfig();
         }
     }
 
@@ -64,15 +66,14 @@ class Main extends PluginBase {
         $form = new SimpleForm(function (Player $player, $data) {
             if ($data === null) return true;
             $buttons = array_keys($this->getConfig()->get("ranks"));
-            if (count($buttons) == $data) return;
+            if (count($buttons) === $data) return;
             $button = $buttons[$data];
-            $form2 = new SimpleForm(function (Player $player, $data) {
+            $form2 = new SimpleForm(function (Player $player, ?int $data = null) {
                 if ($data === null) {
                     if ($this->getConfig()->get("return-to-main")) $this->ranksMenu($player);
                     return true;
-                }
-                switch ($data) {
-                    case 0: $this->ranksMenu($player); break;
+                } elseif ($data === 0) {
+                    $this->ranksMenu($player);
                 }
             });
             $form2->setTitle($this->replace($player, $this->getConfig()->getNested("ranks." . $button . ".title")));
@@ -86,7 +87,7 @@ class Main extends PluginBase {
             $bimage = $this->getConfig()->getNested("ranks." . $ranks . ".button-image");
             if ($bimage == null) {
                 $form->addButton($this->replace($player, $this->getConfig()->getNested("ranks." . $ranks . ".menu-button")));
-            } elseif (stripos($bimage, "https://") !== false xor stripos($bimage, "http://") !== false) {
+            } elseif (mb_stripos($bimage, "https://") !== false || mb_stripos($bimage, "http://") !== false) {
                 $form->addButton(
                     $this->replace($player, $this->getConfig()->getNested("ranks." . $ranks . ".menu-button")),
                     1, $this->getConfig()->getNested("ranks." . $ranks . ".button-image")
@@ -103,9 +104,7 @@ class Main extends PluginBase {
     }
 
     public function replace(Player $player, string $location) : string {
-        $from = ["{player}", "&"];
-        $to = [$player->getName(), "§"];
-        return str_replace($from, $to, $location);
+        return str_replace("{player}", $player->getName(), TextFormat::colorize($location));
     }
 
 }
