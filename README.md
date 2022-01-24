@@ -10,7 +10,7 @@ A PocketMine-MP plugin that shows information about ranks in the server. You can
 # Features
 
 - Unlimited ranks lists
-- Missing config file detection
+- Missing/corrupted config file detection and handling
 - Config file can be reset
 - Show player name (`{player}`)
 - Supports `&` as formatting codes

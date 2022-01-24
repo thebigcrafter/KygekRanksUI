@@ -51,12 +51,13 @@ class Commands extends Command implements PluginOwned {
         if (!$sender instanceof Player) $sender->sendMessage($this->prefix . TextFormat::RED . "This command only works in-game!");
         else {
             if ($this->testPermissionSilent($sender)) {
-                if (file_exists($this->getOwningPlugin()->getDataFolder()."config.yml")) {
-                    $this->getOwningPlugin()->getConfig()->reload();
-                    $this->getOwningPlugin()->ranksMenu($sender);
-                } else {
-                    $sender->sendMessage($this->prefix . TextFormat::RED . "Config file cannot be found, please restart the server!");
+                $path = $this->getOwningPlugin()->getDataFolder() . "config.yml";
+                if (!file_exists($path) || empty(file_get_contents($path))) {
+                    $sender->sendMessage($this->prefix . TextFormat::YELLOW . "Configuration file is corrupted or missing, regenerating it...");
+                    $this->getOwningPlugin()->saveResource("config.yml", true);
                 }
+                $this->getOwningPlugin()->getConfig()->reload();
+                $this->getOwningPlugin()->ranksMenu($sender);
             } else {
                 $sender->sendMessage($this->prefix . TextFormat::RED . "You do not have permission to use this command!");
             }
