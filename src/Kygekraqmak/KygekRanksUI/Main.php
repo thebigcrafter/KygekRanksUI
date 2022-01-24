@@ -13,7 +13,7 @@
  *          |____/ |____/                           |_|
  *
  * A PocketMine-MP plugin that shows information about ranks in the server
- * Copyright (C) 2020-2021 Kygekraqmak, KygekTeam
+ * Copyright (C) 2020-2022 Kygekraqmak, KygekTeam
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -52,7 +52,7 @@ class Main extends PluginBase {
     }
 
     public function checkConfig() {
-        KtpmplCfs::checkConfig($this, "2.0");
+        KtpmplCfs::checkConfig($this, "2.1");
         if ($this->getConfig()->get("reset") === true) {
             $this->getLogger()->notice("Successfully reset the configuration file");
             unlink($this->getDataFolder()."config.yml");
