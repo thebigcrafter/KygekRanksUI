@@ -1,13 +1,16 @@
-# KygekRanksUI
+<h1 align="center">KygekRanksUI</h1>
 
-<a href="https://poggit.pmmp.io/p/KygekRanksUI"><img src="https://poggit.pmmp.io/shield.dl.total/KygekRanksUI"></a>
-[![Discord](https://img.shields.io/discord/735439472992321587.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)](https://discord.gg/CXtqUZv)
+<p align="center">
+<a href="https://poggit.pmmp.io/p/KygekRanksUI"><img src="https://poggit.pmmp.io/shield.dl.total/KygekRanksUI?style=for-the-badge" alt="poggit" /></a>
+<a href="https://github.com/thebigcrafter/KygekRanksUI/blob/main/LICENSE"><img src="https://img.shields.io/github/license/thebigcrafter/KygekRanksUI?style=for-the-badge" alt="license" /></a>
+<a href="https://discord.gg/cEXW8uK6QA"><img src="https://img.shields.io/discord/970294579372912700?color=7289DA&label=discord&logo=discord&style=for-the-badge" alt="discord" /></a>
+</p>
 
-**NOTICE:** This plugin branch is for PocketMine-MP 4. If you are looking for the PocketMine-MP 3 version of this plugin, please visit the [master](https://github.com/KygekTeam/KygekRanksUI/tree/master) branch.
+# 📖 About
 
 A PocketMine-MP plugin that shows information about ranks in the server. You can provide ranks features, prices and contact details. This is a plugin that showcases ranks that can be purchased via staffs/websites. This is not a plugin for setting up purchaseable ranks using in-game money.
 
-# Features
+# 🧩 Features
 
 - Unlimited ranks lists
 - Missing/corrupted config file detection and handling
@@ -20,30 +23,23 @@ A PocketMine-MP plugin that shows information about ranks in the server. You can
 - Enable/disable ranks form to go back to main form when pressing the X button
 - Automatic plugin updates checker
 
-# How to Install
+# ⬇️ Installation
 
 1. Download the latest version (It is recommended to always download the latest version for the best experience, except you're having compatibility issues).
 2. Place the `KygekRanksUI.phar` file into the `plugins` folder.
 3. Restart the server.
 4. Done!
 
-# Commands & Permissions
+# 📜 Commands & Permissions
 
 | Command | Default Description | Permission | Default |
 | --- | --- | --- | --- |
 | `/ranks` | Information about ranks in the server | `kygekranksui.ranks` | true |
 
-Command description can be changed in `config.yml`. You can also add command aliases in `config.yml`.
+💡 Tips:
+- Command description can be changed in `config.yml`. You can also add command aliases in `config.yml`.
+- Use `-kygekranksui.ranks` to blacklist the `/ranks` command permission to groups/users in PurePerms.
 
-Use `-kygekranksui.ranks` to blacklist the `/ranks` command permission to groups/users in PurePerms.
+# ⚖️ License
 
-# Upcoming Features
-
-- Currently none planned. You can contribute or suggest for new features.
-
-# Additional Notes
-
-- <a href="https://github.com/KygekDev/default-textures">Visit KygekDev's repo</a> for a list of Minecraft Bedrock default texture pack library (for references only) if you want to use texture packs for button image.
-- Join our Discord server <a href="https://discord.gg/CXtqUZv">here</a> for latest updates from KygekTeam.
-- If you found bugs or want to give suggestions, please visit <a href="https://github.com/KygekTeam/KygekRanksUI/issues">here</a> or join our Discord server.
-- We accept all contributions! If you want to contribute, please make a pull request in <a href="https://github.com/KygekTeam/KygekRanksUI/pulls">here</a>.
+Licensed under the [GNU General Public License v3.0](https://github.com/thebigcrafter/KygekRanksUI/blob/main/LICENSE) license.
