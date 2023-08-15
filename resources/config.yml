@@ -4,9 +4,7 @@
 
 ##### DANGER ZONE #####
 # Do not change this (Only for internal use)!
-config-version: "2.1"
-# If you encounter bugs set this to true to reset the config!
-reset: false
+config-version: "2.2"
 #######################
 
 # Use "{player}" to show player's name
@@ -78,10 +76,4 @@ ranks:
     title: "Rank3"
     content: "Change in config.yml!"
   # You can add more if you need by following the format above
-
-# Whether to check for plugin updates (Recommended)
-check-updates: true
-
-# Whether to warn if plugin is running on a development version (Recommended)
-warn-development: true
 ...

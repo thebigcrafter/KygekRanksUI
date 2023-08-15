@@ -2,8 +2,8 @@
 
 <p align="center">
 <a href="https://poggit.pmmp.io/p/KygekRanksUI"><img src="https://poggit.pmmp.io/shield.dl.total/KygekRanksUI?style=for-the-badge" alt="poggit" /></a>
-<a href="https://github.com/thebigcrafter/KygekRanksUI/blob/main/LICENSE"><img src="https://img.shields.io/github/license/thebigcrafter/KygekRanksUI?style=for-the-badge" alt="license" /></a>
-<a href="https://discord.gg/cEXW8uK6QA"><img src="https://img.shields.io/discord/970294579372912700?color=7289DA&label=discord&logo=discord&style=for-the-badge" alt="discord" /></a>
+<a href="https://github.com/thebigcrafter/KygekRanksUI#GPL-3.0-1"><img src="https://img.shields.io/github/license/thebigcrafter/KygekRanksUI?style=for-the-badge" alt="license" /></a>
+<a href="https://discord.gg/PykBfE2TZ9"><img src="https://img.shields.io/discord/1087729577004122112?color=7289DA&label=discord&logo=discord&style=for-the-badge" alt="discord" /></a>
 </p>
 
 # 📖 About
@@ -42,4 +42,4 @@ A PocketMine-MP plugin that shows information about ranks in the server. You can
 
 # ⚖️ License
 
-Licensed under the [GNU General Public License v3.0](https://github.com/thebigcrafter/KygekRanksUI/blob/main/LICENSE) license.
+Licensed under the [GNU General Public License v3.0](https://github.com/thebigcrafter/KygekRanksUI#GPL-3.0-1) license.
