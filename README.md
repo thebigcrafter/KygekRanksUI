@@ -30,6 +30,14 @@ A PocketMine-MP plugin that shows information about ranks in the server. You can
 3. Restart the server.
 4. Done!
 
+# 🛠️ Development
+
+Install the locked Composer dependencies and use DevTools to package and validate the plugin PHAR. The packaging metadata resolves the pinned FormsUI and Hydrogen virions without copying a builder release version into user-facing documentation.
+
+```sh
+composer install
+```
+
 # 📜 Commands & Permissions
 
 | Command | Default Description | Permission | Default |

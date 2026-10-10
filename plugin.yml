@@ -24,7 +24,7 @@ main: Kygekraqmak\KygekRanksUI\Main
 api: 5.0.0
 authors: [Kygekraqmak, KygekTeam, thebigcrafter]
 description: Shows information about ranks in the server
-website: https://github.com/KygekTeam/KygekRanksUI
+website: https://github.com/thebigcrafter/KygekRanksUI
 
 permissions:
   kygekranksui.ranks:
