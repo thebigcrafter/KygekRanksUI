@@ -31,8 +31,13 @@ use pocketmine\utils\TextFormat;
 use thebigcrafter\Hydrogen\HConfig;
 use thebigcrafter\Hydrogen\Hydrogen;
 use Vecnavium\FormsUI\SimpleForm;
+use function array_filter;
 use function array_keys;
+use function array_values;
 use function count;
+use function is_array;
+use function is_bool;
+use function is_string;
 use function mb_stripos;
 use function str_replace;
 
@@ -45,54 +50,92 @@ class Main extends PluginBase {
 		HConfig::verifyConfigVersion($this->getConfig(), "2.2");
 
 		$this->getServer()->getCommandMap()->register("ranks", new Commands(
-			$this, $this->getConfig()->get("command-description"),
-			$this->getConfig()->get("command-aliases")
+			$this, $this->getStringConfig("command-description"),
+			$this->getAliases()
 		));
 	}
 
-	public function ranksMenu($player) {
-		$form = new SimpleForm(function (Player $player, $data) {
+	public function ranksMenu(Player $player) : void {
+		$form = new SimpleForm(function (Player $player, ?int $data = null) : bool {
 			if ($data === null) return true;
-			$buttons = array_keys($this->getConfig()->get("ranks"));
-			if (count($buttons) === $data) return;
+			$buttons = array_keys($this->getRanks());
+			if (count($buttons) === $data) return true;
 			$button = $buttons[$data];
-			$form2 = new SimpleForm(function (Player $player, ?int $data = null) {
+			$form2 = new SimpleForm(function (Player $player, ?int $data = null) : bool {
 				if ($data === null) {
-					if ($this->getConfig()->get("return-to-main")) $this->ranksMenu($player);
+					if ($this->getBoolConfig("return-to-main")) $this->ranksMenu($player);
 					return true;
 				} elseif ($data === 0) {
 					$this->ranksMenu($player);
 				}
+				return true;
 			});
-			$form2->setTitle($this->replace($player, $this->getConfig()->getNested("ranks." . $button . ".title")));
-			$form2->setContent($this->replace($player, $this->getConfig()->getNested("ranks." . $button . ".content")));
-			$form2->addButton($this->replace($player, $this->getConfig()->get("return-button")));
+			$form2->setTitle($this->replace($player, $this->getNestedString("ranks." . $button . ".title")));
+			$form2->setContent($this->replace($player, $this->getNestedString("ranks." . $button . ".content")));
+			$form2->addButton($this->replace($player, $this->getStringConfig("return-button")));
 			$player->sendForm($form2);
+			return true;
 		});
-		$form->setTitle($this->replace($player, $this->getConfig()->get("title")));
-		$form->setContent($this->replace($player, $this->getConfig()->get("content")));
-		foreach (array_keys($this->getConfig()->get("ranks")) as $ranks) {
-			$bimage = $this->getConfig()->getNested("ranks." . $ranks . ".button-image");
-			if ($bimage == null) {
-				$form->addButton($this->replace($player, $this->getConfig()->getNested("ranks." . $ranks . ".menu-button")));
+		$form->setTitle($this->replace($player, $this->getStringConfig("title")));
+		$form->setContent($this->replace($player, $this->getStringConfig("content")));
+		foreach (array_keys($this->getRanks()) as $ranks) {
+			$bimage = $this->getNestedString("ranks." . $ranks . ".button-image");
+			if ($bimage === "") {
+				$form->addButton($this->replace($player, $this->getNestedString("ranks." . $ranks . ".menu-button")));
 			} elseif (mb_stripos($bimage, "https://") !== false || mb_stripos($bimage, "http://") !== false) {
 				$form->addButton(
-					$this->replace($player, $this->getConfig()->getNested("ranks." . $ranks . ".menu-button")),
-					1, $this->getConfig()->getNested("ranks." . $ranks . ".button-image")
+					$this->replace($player, $this->getNestedString("ranks." . $ranks . ".menu-button")),
+					1, $bimage
 				);
 			} else {
 				$form->addButton(
-					$this->replace($player, $this->getConfig()->getNested("ranks." . $ranks . ".menu-button")),
-					0, $this->getConfig()->getNested("ranks." . $ranks . ".button-image")
+					$this->replace($player, $this->getNestedString("ranks." . $ranks . ".menu-button")),
+					0, $bimage
 				);
 			}
 		}
-		$form->addButton($this->replace($player, $this->getConfig()->get("exit-button")));
+		$form->addButton($this->replace($player, $this->getStringConfig("exit-button")));
 		$player->sendForm($form);
 	}
 
 	public function replace(Player $player, string $location) : string {
 		return str_replace("{player}", $player->getName(), TextFormat::colorize($location));
+	}
+
+	/** @return array<string, mixed> */
+	private function getRanks() : array {
+		$ranks = $this->getConfig()->get("ranks", []);
+		if (!is_array($ranks)) {
+			return [];
+		}
+		$result = [];
+		foreach ($ranks as $key => $value) {
+			if (is_string($key)) {
+				$result[$key] = $value;
+			}
+		}
+		return $result;
+	}
+
+	private function getStringConfig(string $key) : string {
+		$value = $this->getConfig()->get($key, "");
+		return is_string($value) ? $value : "";
+	}
+
+	private function getNestedString(string $key) : string {
+		$value = $this->getConfig()->getNested($key, "");
+		return is_string($value) ? $value : "";
+	}
+
+	private function getBoolConfig(string $key) : bool {
+		$value = $this->getConfig()->get($key, false);
+		return is_bool($value) ? $value : false;
+	}
+
+	/** @return list<string> */
+	private function getAliases() : array {
+		$value = $this->getConfig()->get("command-aliases", []);
+		return is_array($value) ? array_values(array_filter($value, is_string(...))) : [];
 	}
 
 }

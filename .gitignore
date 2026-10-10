@@ -1,4 +1,2 @@
-.idea/
-composer.phar
 /vendor/
-.php-cs-fixer.cache
+/.php-cs-fixer.cache
