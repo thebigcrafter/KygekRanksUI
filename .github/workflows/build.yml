@@ -1,0 +1,23 @@
+name: Build and validate KygekRanksUI plugin
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build and validate KygekRanksUI plugin
+    uses: NhanAZ/DevTools/.github/workflows/build-plugin.yml@6180fb4a04e5981ccb24128823970de3e8fd3830
+    with:
+      axolotl-ref: dfe0d07e48a9e8d5a4a242fa43ff1cd3b743a955
+      prepare-dependencies: true
+      php-version: '8.2'
+      pm-version-major: '5'
+      phpstan: max
+      phpstan-paths: tools/stubs
+      artifact-name: KygekRanksUI-${{ github.sha }}
+      retention-days: 14
