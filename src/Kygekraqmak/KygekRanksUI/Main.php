@@ -47,7 +47,7 @@ class Main extends PluginBase {
 		$this->saveDefaultConfig();
 
 		Hydrogen::checkForUpdates($this);
-		HConfig::verifyConfigVersion($this->getConfig(), "2.2");
+		HConfig::verifyConfigVersion($this->getConfig(), "2.2.3");
 
 		$this->getServer()->getCommandMap()->register("ranks", new Commands(
 			$this, $this->getStringConfig("command-description"),
