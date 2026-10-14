@@ -11,7 +11,7 @@ permissions:
 jobs:
   build:
     name: Build and validate KygekRanksUI plugin
-    uses: NhanAZ/DevTools/.github/workflows/build-plugin.yml@628368d9476762bd23a194120b4a9a9d5ee299a1
+    uses: NhanAZ/DevTools/.github/workflows/build-plugin.yml@3dedda2a1f6e42885aa680aaadeebacbc0f62733
     with:
       axolotl-ref: dfe0d07e48a9e8d5a4a242fa43ff1cd3b743a955
       prepare-dependencies: true
