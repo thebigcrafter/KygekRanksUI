@@ -8,7 +8,7 @@ updates:
       day: monday
       time: "06:30"
       timezone: Asia/Ho_Chi_Minh
-    open-pull-requests-limit: 5
+    open-pull-requests-limit: 3
   - package-ecosystem: github-actions
     directory: /
     schedule:
@@ -16,4 +16,4 @@ updates:
       day: monday
       time: "06:30"
       timezone: Asia/Ho_Chi_Minh
-    open-pull-requests-limit: 5
+    open-pull-requests-limit: 3
